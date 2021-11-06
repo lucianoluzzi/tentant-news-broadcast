@@ -8,3 +8,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Tenant News Broadcast"
 include ':app'
+include ':timeline'
+include ':message'
+include ':navigation'
+include ':navigationimpl'
