@@ -43,6 +43,7 @@ android {
 
 dependencies {
     implementation(project(":navigation"))
+    implementation project(':design')
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
