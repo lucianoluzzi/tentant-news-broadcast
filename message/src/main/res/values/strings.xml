@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="message_image_content_description">Message image</string>
+    <string name="favorite_icon_content_description">Favorite icon</string>
+</resources>

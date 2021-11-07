@@ -7,14 +7,15 @@
 
     <application
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".MainApplication"
+        android:name="nl.com.lucianoluzzi.tenantnewsbroadcast.MainApplication"
         android:theme="@style/Theme.TenantNewsBroadcast">
         <activity
-            android:name=".MainActivity"
+            android:name="nl.com.lucianoluzzi.tenantnewsbroadcast.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

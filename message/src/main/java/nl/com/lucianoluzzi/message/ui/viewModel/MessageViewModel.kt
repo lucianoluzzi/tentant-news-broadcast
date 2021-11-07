@@ -26,8 +26,7 @@ class MessageViewModel(
 
     private fun handleIsInterestedClick(messageId: String) {
         viewModelScope.launch {
-            val response = messageRepository.setAsInterested(messageId)
-            when (response) {
+            when (messageRepository.setAsInterested(messageId)) {
                 Response.Completed -> _messageEventLiveData.value =
                     MessageEvents.IsInterestedSuccess.asLiveDataEvent
                 is Response.Error -> _messageEventLiveData.value =

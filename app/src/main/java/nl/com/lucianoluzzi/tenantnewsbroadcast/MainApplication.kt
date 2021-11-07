@@ -2,7 +2,7 @@ package nl.com.lucianoluzzi.tenantnewsbroadcast
 
 import android.app.Application
 import nl.com.lucianoluzzi.message.data.messageDataModule
-import nl.com.lucianoluzzi.message.ui.messageUImodule
+import nl.com.lucianoluzzi.message.ui.messageUIModule
 import nl.com.lucianoluzzi.navigationimpl.navigationModule
 import nl.com.lucianoluzzi.network.networkModule
 import nl.com.lucianoluzzi.timeline.data.timelineDataModule
@@ -26,7 +26,7 @@ class MainApplication : Application() {
                 networkModule,
                 timelineUIModule,
                 timelineDataModule,
-                messageUImodule,
+                messageUIModule,
                 messageDataModule
             )
             modules(modules)

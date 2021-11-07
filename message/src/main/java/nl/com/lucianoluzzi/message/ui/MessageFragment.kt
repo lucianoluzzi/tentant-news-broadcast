@@ -14,6 +14,7 @@ import nl.com.lucianoluzzi.message.databinding.FragmentMessageBinding
 import nl.com.lucianoluzzi.message.ui.model.MessageEvents
 import nl.com.lucianoluzzi.message.ui.model.MessageIntent
 import nl.com.lucianoluzzi.message.ui.viewModel.MessageViewModel
+import nl.com.lucianoluzzi.navigation.Navigator.Companion.MESSAGE_ARGUMENT_KEY
 
 class MessageFragment(
     private val viewModel: MessageViewModel
@@ -23,7 +24,7 @@ class MessageFragment(
         FragmentMessageBinding.inflate(layoutInflater)
     }
     private val message by lazy<Message?> {
-        requireArguments().getParcelable("message")
+        requireArguments().getParcelable(MESSAGE_ARGUMENT_KEY)
     }
 
     override fun onCreateView(

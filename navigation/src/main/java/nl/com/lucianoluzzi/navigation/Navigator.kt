@@ -8,4 +8,8 @@ interface Navigator {
         fragment: Fragment,
         message: Message
     )
+
+    companion object {
+        const val MESSAGE_ARGUMENT_KEY = "message"
+    }
 }

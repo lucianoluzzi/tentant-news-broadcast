@@ -4,7 +4,7 @@ import nl.com.lucianoluzzi.message.ui.viewModel.MessageViewModel
 import org.koin.androidx.fragment.dsl.fragment
 import org.koin.dsl.module
 
-val messageUImodule = module {
+val messageUIModule = module {
     single {
         MessageViewModel(
             messageRepository = get()
