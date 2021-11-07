@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import nl.com.lucianoluzzi.design.ItemMarginDecorator
 import nl.com.lucianoluzzi.navigation.Navigator
 import nl.com.lucianoluzzi.timeline.databinding.FragmentTimelineBinding
 import nl.com.lucianoluzzi.timeline.ui.adapter.TimelineAdapter
-import nl.com.lucianoluzzi.timeline.ui.model.TimelineState
 
 class TimelineFragment(
     private val navigator: Navigator,
@@ -19,6 +21,7 @@ class TimelineFragment(
         val layoutInflater = LayoutInflater.from(requireContext())
         FragmentTimelineBinding.inflate(layoutInflater)
     }
+    private val timelineAdapter = TimelineAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,8 +32,10 @@ class TimelineFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setList()
-        viewModel.timelineState.observe(viewLifecycleOwner) {
-            handleState(it)
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.pagingData.collect { pagingData ->
+                timelineAdapter.submitData(pagingData)
+            }
         }
     }
 
@@ -38,14 +43,6 @@ class TimelineFragment(
         if (messages.itemDecorationCount == 0) {
             messages.addItemDecoration(ItemMarginDecorator(16))
         }
-    }
-
-    private fun handleState(timelineState: TimelineState) {
-        when (timelineState) {
-            is TimelineState.Error -> TODO()
-            TimelineState.Loading -> TODO()
-            is TimelineState.MessageList -> binding.messages.adapter =
-                TimelineAdapter(timelineState.messages)
-        }
+        messages.adapter = timelineAdapter
     }
 }

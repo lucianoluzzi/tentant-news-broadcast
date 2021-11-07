@@ -12,6 +12,8 @@ val timelineUIModule = module {
         )
     }
     viewModel {
-        TimelineViewModel()
+        TimelineViewModel(
+            timelineRepository = get()
+        )
     }
 }
