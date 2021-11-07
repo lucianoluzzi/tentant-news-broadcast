@@ -6,7 +6,7 @@ import androidx.paging.cachedIn
 import androidx.paging.map
 import kotlinx.coroutines.flow.map
 import nl.com.lucianoluzzi.timeline.data.repository.TimelineRepository
-import nl.com.lucianoluzzi.timeline.domain.mapper.MessageMapper
+import nl.com.lucianoluzzi.core.domain.mapper.MessageMapper
 
 class TimelineViewModel(
     timelineRepository: TimelineRepository,

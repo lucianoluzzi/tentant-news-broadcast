@@ -2,7 +2,7 @@ package nl.com.lucianoluzzi.timeline.data.dataSource
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import nl.com.lucianoluzzi.timeline.data.response.MessageResponse
+import nl.com.lucianoluzzi.core.data.response.MessageResponse
 import nl.com.lucianoluzzi.timeline.data.service.TimelineService
 
 class TimelinePagingSource(

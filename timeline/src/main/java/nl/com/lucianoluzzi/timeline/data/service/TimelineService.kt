@@ -1,7 +1,6 @@
 package nl.com.lucianoluzzi.timeline.data.service
 
-import kotlinx.coroutines.flow.Flow
-import nl.com.lucianoluzzi.timeline.data.response.MessageResponse
+import nl.com.lucianoluzzi.core.data.response.MessageResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

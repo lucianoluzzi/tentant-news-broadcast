@@ -1,4 +1,4 @@
-package nl.com.lucianoluzzi.network
+package nl.com.lucianoluzzi.network.client
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

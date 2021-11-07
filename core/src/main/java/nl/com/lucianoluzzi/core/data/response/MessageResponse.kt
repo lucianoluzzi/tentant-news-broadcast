@@ -1,4 +1,4 @@
-package nl.com.lucianoluzzi.timeline.data.response
+package nl.com.lucianoluzzi.core.data.response
 
 import com.google.gson.annotations.SerializedName
 

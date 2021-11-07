@@ -1,7 +1,7 @@
-package nl.com.lucianoluzzi.timeline.domain.mapper
+package nl.com.lucianoluzzi.core.domain.mapper
 
-import nl.com.lucianoluzzi.timeline.data.response.MessageResponse
-import nl.com.lucianoluzzi.timeline.domain.Message
+import nl.com.lucianoluzzi.core.domain.Message
+import nl.com.lucianoluzzi.core.data.response.MessageResponse
 
 class MessageMapper {
     fun messageResponseToDomain(messageResponse: MessageResponse) = Message(

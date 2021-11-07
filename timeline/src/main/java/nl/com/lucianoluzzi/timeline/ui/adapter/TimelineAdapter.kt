@@ -7,10 +7,13 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import nl.com.lucianoluzzi.core.domain.Message
+import nl.com.lucianoluzzi.timeline.R
 import nl.com.lucianoluzzi.timeline.databinding.ViewMessageItemBinding
-import nl.com.lucianoluzzi.timeline.domain.Message
 
-class TimelineAdapter : PagingDataAdapter<Message, TimelineAdapter.TimelineViewHolder>(DIFF_UTIL) {
+class TimelineAdapter(
+    private val onClickListener: (message: Message) -> Unit
+) : PagingDataAdapter<Message, TimelineAdapter.TimelineViewHolder>(DIFF_UTIL) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimelineViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -33,7 +36,12 @@ class TimelineAdapter : PagingDataAdapter<Message, TimelineAdapter.TimelineViewH
                 HtmlCompat.fromHtml(message.description, HtmlCompat.FROM_HTML_MODE_LEGACY)
             favorite.isSelected = message.isInterested
             message.image?.let {
-                image.load(it)
+                image.load(it) {
+                    placeholder(R.drawable.ic_placeholder)
+                }
+            }
+            binding.root.setOnClickListener {
+                onClickListener(message)
             }
         }
     }

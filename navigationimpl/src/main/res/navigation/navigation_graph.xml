@@ -15,5 +15,9 @@
     <fragment
         android:id="@+id/messageFragment"
         android:name="nl.com.lucianoluzzi.message.ui.MessageFragment"
-        android:label="MessageFragment" />
+        android:label="MessageFragment" >
+        <argument
+            android:name="message"
+            app:argType="nl.com.lucianoluzzi.core.domain.Message" />
+    </fragment>
 </navigation>

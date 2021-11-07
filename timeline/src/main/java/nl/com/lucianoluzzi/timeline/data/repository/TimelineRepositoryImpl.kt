@@ -5,7 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
 import nl.com.lucianoluzzi.timeline.data.dataSource.TimelinePagingSource
-import nl.com.lucianoluzzi.timeline.data.response.MessageResponse
+import nl.com.lucianoluzzi.core.data.response.MessageResponse
 import nl.com.lucianoluzzi.timeline.data.service.TimelineService
 
 class TimelineRepositoryImpl(

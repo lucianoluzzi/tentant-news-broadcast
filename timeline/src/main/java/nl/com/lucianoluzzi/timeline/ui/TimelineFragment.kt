@@ -21,7 +21,12 @@ class TimelineFragment(
         val layoutInflater = LayoutInflater.from(requireContext())
         FragmentTimelineBinding.inflate(layoutInflater)
     }
-    private val timelineAdapter = TimelineAdapter()
+    private val timelineAdapter = TimelineAdapter { message ->
+        navigator.navigateToMessage(
+            fragment = this,
+            message = message
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
