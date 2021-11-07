@@ -22,19 +22,27 @@ class TimelinePagingSource(
             val timelinePage = timelineService.getTimeline(
                 toReference = currentPageReference
             )
-            val nextPageReference =
-                if (timelinePage.lastOrNull()?.pagingReference == currentPageReference) {
-                    null
-                } else {
-                    timelinePage.lastOrNull()?.pagingReference
-                }
             LoadResult.Page(
                 data = timelinePage,
-                nextKey = nextPageReference,
+                nextKey = getNextPageReference(
+                    currentPageReference = currentPageReference,
+                    messagesResponse = timelinePage
+                ),
                 prevKey = currentPageReference
             )
         } catch (exception: Exception) {
             LoadResult.Error(exception)
+        }
+    }
+
+    private fun getNextPageReference(
+        currentPageReference: Int?,
+        messagesResponse: List<MessageResponse>
+    ): Int? {
+        return if (messagesResponse.lastOrNull()?.pagingReference == currentPageReference) {
+            null
+        } else {
+            messagesResponse.lastOrNull()?.pagingReference
         }
     }
 }

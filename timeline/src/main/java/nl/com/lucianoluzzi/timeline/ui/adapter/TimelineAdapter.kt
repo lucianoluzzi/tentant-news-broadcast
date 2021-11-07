@@ -2,6 +2,7 @@ package nl.com.lucianoluzzi.timeline.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -28,11 +29,9 @@ class TimelineAdapter : PagingDataAdapter<Message, TimelineAdapter.TimelineViewH
 
         fun setViews(message: Message) = with(binding) {
             title.text = message.title
-            description.text = message.description
+            description.text =
+                HtmlCompat.fromHtml(message.description, HtmlCompat.FROM_HTML_MODE_LEGACY)
             favorite.isSelected = message.isInterested
-            favorite.setOnClickListener {
-                it.isSelected = !it.isSelected
-            }
             message.image?.let {
                 image.load(it)
             }

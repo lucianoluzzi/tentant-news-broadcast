@@ -6,21 +6,16 @@ import androidx.paging.cachedIn
 import androidx.paging.map
 import kotlinx.coroutines.flow.map
 import nl.com.lucianoluzzi.timeline.data.repository.TimelineRepository
-import nl.com.lucianoluzzi.timeline.domain.Message
+import nl.com.lucianoluzzi.timeline.domain.mapper.MessageMapper
 
 class TimelineViewModel(
-    timelineRepository: TimelineRepository
+    timelineRepository: TimelineRepository,
+    messageMapper: MessageMapper
 ) : ViewModel() {
 
     val pagingData = timelineRepository.getTimelineStream().map { pagingData ->
         pagingData.map { messageResponse ->
-            Message(
-                id = messageResponse.id,
-                title = messageResponse.title,
-                description = messageResponse.content,
-                isInterested = messageResponse.isInterested,
-                image = messageResponse.image.firstOrNull()?.url ?: messageResponse.company.logo
-            )
+            messageMapper.messageResponseToDomain(messageResponse)
         }
     }.cachedIn(viewModelScope)
 }
